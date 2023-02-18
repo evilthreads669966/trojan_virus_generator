@@ -4,3 +4,5 @@ Pass in your ip address as the argument to the script. You IP address will be se
 
 INPUT < YOUR IP ADDRESS<BR>
 OUTPUT > TROJAN VIRUS
+
+REQUIREMENTS: LINUX, METASPLOIT, RUBY

@@ -4,8 +4,9 @@
 # @author Chris Basinger<evilthreads669966@gmail.com>
 # TROJAN GENERATOR
 #
-# set the IP address to the first script argument
+# set the IP address to the first program argument
 ip = ARGV[0]
+# set the key to the second program argument
 key = ARGV[1]
 
 #exit if metasploit is not installed

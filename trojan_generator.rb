@@ -22,9 +22,6 @@ puts "Enter WINDOWS | ANDROID | LINUX"
 # Get the platform type
 selection = STDIN.gets.chomp.upcase
 
-# name pointer
-fileName = nil
-
 # run msfvenom to generate the virus file.
 case selection
 when "LINUX"
